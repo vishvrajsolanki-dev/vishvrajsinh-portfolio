@@ -7,7 +7,7 @@ Source of truth for this build. Do not redesign. See planning transcript for ful
 - Education Ed1 · Timeline T1 · Certs C3 · About A1 · Contact K1 · Footer F1
 - System: Navy Trust · Light default + Dark toggle · No neon
 - Type: Syne · Manrope · JetBrains Mono
-- Hero stage (post-review): System Panel schematic (pathfinding + Monte Carlo) + optional wireframe 3D without remote Environment maps. See `HERO_REVIEW.md`.
+- Hero stage (post-review): Cinematic full-bleed H-C glass sculpture (Alexis-style composition). Always-dark immersive hero; About follows. Local RoomEnvironment (no CDN). Featured project card + scroll cue.
 
 ## Section order (Home)
 Nav → Hero → About → Work → Experience → Skills → Education → Timeline → Certs → Contact → Footer

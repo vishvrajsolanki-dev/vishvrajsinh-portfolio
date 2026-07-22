@@ -17,30 +17,47 @@ const LINKS = [
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const onHome = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      const hero = document.getElementById("hero");
+      if (!hero || !onHome) {
+        setOverHero(false);
+        return;
+      }
+      setOverHero(y < hero.offsetHeight - 80);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [onHome]);
 
   useEffect(() => {
     setOpen(false);
+    setMenuOpen(false);
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open || menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, menuOpen]);
 
   useEffect(() => {
-    if (location.pathname !== "/") {
+    if (!onHome) {
       setActive("");
       return;
     }
@@ -61,10 +78,16 @@ export function Navbar() {
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, [location.pathname]);
+  }, [onHome]);
+
+  const drawerOpen = open || menuOpen;
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+    <header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${
+        overHero && onHome ? styles.overHero : ""
+      }`}
+    >
       <div className={`container ${styles.inner}`}>
         <Link to="/" className={styles.logo} aria-label={`${SITE.name} home`}>
           <span className={styles.logoMark}>{SITE.shortName}</span>
@@ -111,23 +134,35 @@ export function Navbar() {
           </Button>
           <button
             type="button"
-            className={styles.hamburger}
-            aria-expanded={open}
+            className={styles.menuBtn}
+            aria-expanded={drawerOpen}
             aria-controls="mobile-drawer"
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
+            aria-label={drawerOpen ? "Close menu" : "Open menu"}
+            onClick={() => {
+              setMenuOpen((v) => !v);
+              setOpen((v) => !v);
+            }}
           >
-            <span />
-            <span />
-            <span />
+            <span className={styles.menuLabel}>Menu</span>
+            <span className={styles.menuDots} aria-hidden>
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
           </button>
         </div>
       </div>
 
       <div
         id="mobile-drawer"
-        className={`${styles.drawer} ${open ? styles.drawerOpen : ""}`}
-        hidden={!open}
+        className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}
+        hidden={!drawerOpen}
       >
         <nav aria-label="Mobile">
           {LINKS.map((link) => (
@@ -135,7 +170,10 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={`${styles.drawerLink} ${active === link.id ? styles.linkActive : ""}`}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                setMenuOpen(false);
+              }}
             >
               {link.label}
             </a>
