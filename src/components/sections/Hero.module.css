@@ -23,7 +23,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .stage canvas {
@@ -63,6 +63,13 @@
   grid-template-rows: 1fr auto;
   padding-top: calc(var(--nav-height) + 48px);
   padding-bottom: 36px;
+  pointer-events: none;
+}
+
+.content,
+.metrics,
+.scroll {
+  pointer-events: auto;
 }
 
 .content {
@@ -210,6 +217,11 @@
     padding-top: calc(var(--nav-height) + 28px);
   }
 
+  .stage {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
   .content {
     max-width: none;
     align-self: center;
@@ -240,9 +252,5 @@
 
   .scroll {
     display: none;
-  }
-
-  .stage {
-    opacity: 0.55;
   }
 }

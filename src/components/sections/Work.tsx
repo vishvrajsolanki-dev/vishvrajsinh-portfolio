@@ -124,7 +124,7 @@ export function Work() {
 
   return (
     <section id="work" className={styles.section} aria-labelledby="work-heading">
-      <div className={`container ${styles.header}`}>
+      <div className={`container ${styles.header}`} data-reveal>
         <p className={styles.label}>P2 / Selected Work</p>
         <h2 id="work-heading">Flagship systems</h2>
         <p className={styles.lede}>
@@ -140,15 +140,24 @@ export function Work() {
             className={styles.chapter}
             style={{ ["--chapter-accent" as string]: project.accentVar }}
             id={project.slug}
+            data-chapter
           >
             <div className={`container ${styles.chapterInner}`}>
               <div className={styles.copy}>
-                <p className={styles.index}>{project.index}</p>
-                <p className={styles.kicker}>{project.title}</p>
-                <Badge status={project.status} />
-                <h3>{project.subtitle}</h3>
-                <p className={styles.oneLiner}>{project.oneLiner}</p>
-                <div className={styles.actions}>
+                <p className={styles.index} data-chapter-copy>
+                  {project.index}
+                </p>
+                <p className={styles.kicker} data-chapter-copy>
+                  {project.title}
+                </p>
+                <span data-chapter-copy>
+                  <Badge status={project.status} />
+                </span>
+                <h3 data-chapter-copy>{project.subtitle}</h3>
+                <p className={styles.oneLiner} data-chapter-copy>
+                  {project.oneLiner}
+                </p>
+                <div className={styles.actions} data-chapter-copy>
                   <button type="button" className={styles.explore} onClick={() => setActive(project)}>
                     Explore project
                     <span aria-hidden>→</span>
@@ -159,7 +168,7 @@ export function Work() {
                     </Button>
                   )}
                 </div>
-                <div className={styles.metaBar}>
+                <div className={styles.metaBar} data-chapter-copy>
                   <div>
                     <span>Stack</span>
                     <strong>{project.stack.slice(0, 3).join(" · ")}</strong>
@@ -170,11 +179,19 @@ export function Work() {
                   </div>
                   <div>
                     <span>Focus</span>
-                    <strong>{project.id === "arc" || project.id === "rupeeiq" || project.id === "fore" ? "Fintech" : project.id === "trackbot" ? "Embedded" : "RAG"}</strong>
+                    <strong>
+                      {project.id === "arc" || project.id === "rupeeiq" || project.id === "fore"
+                        ? "Fintech"
+                        : project.id === "trackbot"
+                          ? "Embedded"
+                          : "RAG"}
+                    </strong>
                   </div>
                 </div>
               </div>
-              <ProjectVisual project={project} />
+              <div data-chapter-media>
+                <ProjectVisual project={project} />
+              </div>
             </div>
           </article>
         ))}

@@ -51,7 +51,10 @@ export function Hero() {
             <Button href={SITE.resumeUrl} variant="primary" magnetic>
               Download Resume
             </Button>
-            <Button href="/#work" variant="secondary">
+            <Button href="/#about" variant="secondary" magnetic>
+              About me
+            </Button>
+            <Button href="/#work" variant="ghost">
               View work
             </Button>
             {enable3d && (
@@ -72,7 +75,7 @@ export function Hero() {
         </ul>
       </div>
 
-      <a href="/#work" className={styles.scroll} aria-label="Scroll to work">
+      <a href="/#about" className={styles.scroll} aria-label="Scroll to about">
         <span />
         Scroll
       </a>

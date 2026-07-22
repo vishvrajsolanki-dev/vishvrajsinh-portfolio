@@ -4,7 +4,7 @@ import styles from "./Education.module.css";
 export function Education() {
   return (
     <section id="education" className={styles.section} aria-labelledby="education-heading">
-      <div className={`container ${styles.inner}`}>
+      <div className={`container ${styles.inner}`} data-reveal>
         <p className={styles.label}>Education</p>
         <h2 id="education-heading">{EDUCATION.degree}</h2>
         <p className={styles.school}>{EDUCATION.school}</p>

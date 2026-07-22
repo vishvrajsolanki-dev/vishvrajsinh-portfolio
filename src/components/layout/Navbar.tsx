@@ -6,11 +6,11 @@ import { Button } from "../ui/Button";
 import styles from "./Navbar.module.css";
 
 const LINKS = [
+  { href: "/#about", label: "About" },
   { href: "/#work", label: "Work" },
   { href: "/#experience", label: "Experience" },
   { href: "/#skills", label: "Skills" },
   { href: "/#timeline", label: "Timeline" },
-  { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -62,7 +62,7 @@ export function Navbar() {
           >
             {theme === "light" ? "Dark" : "Light"}
           </button>
-          <Button href={SITE.resumeUrl} variant="primary" className={styles.resume}>
+          <Button href={SITE.resumeUrl} variant="primary" magnetic className={styles.resume}>
             Resume
           </Button>
           <button

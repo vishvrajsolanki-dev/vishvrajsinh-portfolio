@@ -10,14 +10,16 @@ export function Experience() {
   return (
     <section id="experience" className={styles.section} aria-labelledby="experience-heading">
       <div className="container">
-        <p className={styles.label}>Experience</p>
-        <h2 id="experience-heading">Where I build</h2>
-        <div className={styles.list}>
+        <div data-reveal>
+          <p className={styles.label}>Experience</p>
+          <h2 id="experience-heading">Where I build</h2>
+        </div>
+        <div className={styles.list} data-reveal-stagger>
           {EXPERIENCE.map((item) => {
             const expanded = !!open[item.id];
             const hasNested = !!item.nested?.length;
             return (
-              <article key={item.id} className={styles.panel}>
+              <article key={item.id} className={styles.panel} data-reveal-child data-spotlight>
                 <div className={styles.panelTop}>
                   <div>
                     <div className={styles.metaRow}>

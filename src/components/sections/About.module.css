@@ -1,6 +1,7 @@
 .section {
   padding: 120px 0;
   background: var(--bg);
+  scroll-margin-top: var(--nav-height);
 }
 
 .grid {

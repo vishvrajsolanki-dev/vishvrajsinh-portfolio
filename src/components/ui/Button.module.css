@@ -69,6 +69,17 @@
 
 .magnetic {
   will-change: transform;
+  transition:
+    transform 120ms var(--ease-soft),
+    background var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft),
+    filter var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-soft);
+}
+
+.magnetic:hover:not(:disabled) {
+  filter: brightness(1.05);
 }
 
 @media (max-width: 768px) {

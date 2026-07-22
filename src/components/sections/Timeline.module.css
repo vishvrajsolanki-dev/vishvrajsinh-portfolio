@@ -36,8 +36,10 @@
   scrollbar-width: thin;
 }
 
-.rail:active {
+.rail:active,
+.grabbing {
   cursor: grabbing;
+  scroll-snap-type: none;
 }
 
 .vertical {

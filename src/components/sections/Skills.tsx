@@ -29,9 +29,11 @@ export function Skills() {
   return (
     <section id="skills" className={styles.section} aria-labelledby="skills-heading">
       <div className="container">
-        <p className={styles.label}>Skills</p>
-        <h2 id="skills-heading">What I build with</h2>
-        <div className={styles.presets} role="group" aria-label="Hire-me presets">
+        <div data-reveal>
+          <p className={styles.label}>Skills</p>
+          <h2 id="skills-heading">What I build with</h2>
+        </div>
+        <div className={styles.presets} role="group" aria-label="Hire-me presets" data-reveal>
           {PRESETS.map((p) => (
             <button
               key={p.id}
@@ -58,7 +60,7 @@ export function Skills() {
             ))}
           </div>
         ) : (
-          <div className={styles.grid}>
+          <div className={styles.grid} data-reveal>
             <svg className={styles.canvas} viewBox="0 0 100 100" role="img" aria-label="Skills constellation">
               <title>Skills constellation</title>
               {SKILL_DOMAINS.map((from) =>

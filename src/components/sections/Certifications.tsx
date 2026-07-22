@@ -12,9 +12,11 @@ export function Certifications() {
   return (
     <section id="certifications" className={styles.section} aria-labelledby="certs-heading">
       <div className="container">
-        <p className={styles.label}>Certifications</p>
-        <h2 id="certs-heading">Verified proof</h2>
-        <div className={styles.binder}>
+        <div data-reveal>
+          <p className={styles.label}>Certifications</p>
+          <h2 id="certs-heading">Verified proof</h2>
+        </div>
+        <div className={styles.binder} data-reveal data-spotlight>
           <div className={styles.issuers} role="listbox" aria-label="Certificate issuers">
             {CERTIFICATIONS.map((item, i) => (
               <button
@@ -51,7 +53,7 @@ export function Certifications() {
                 ))}
               </div>
             )}
-            <Button href={cert.href} variant="primary">
+            <Button href={cert.href} variant="primary" magnetic>
               Verify ↗
             </Button>
           </div>

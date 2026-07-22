@@ -9,7 +9,8 @@ Source of truth for this build. Do not redesign. See planning transcript for ful
 - Type: Syne · Manrope · JetBrains Mono
 
 ## Section order (Home)
-Nav → Hero → Work → Experience → Skills → Education → Timeline → Certs → About → Contact → Footer
+Nav → Hero → About → Work → Experience → Skills → Education → Timeline → Certs → Contact → Footer
+(Updated: About immediately after Hero per explicit request.)
 
 ## Routes
 `/` · `/work/arc` · `/work/trackbot` · `/work/lexis` · `/work/rupeeiq` · `/work/fore`

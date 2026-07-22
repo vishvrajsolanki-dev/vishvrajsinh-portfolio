@@ -116,3 +116,56 @@ p {
 ::selection {
   background: color-mix(in srgb, var(--accent) 28%, transparent);
 }
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--brand) 70%, var(--accent)));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft);
+  background: radial-gradient(
+    520px circle at var(--pointer-x, 50vw) var(--pointer-y, 40vh),
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 55%
+  );
+}
+
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+
+[data-spotlight] > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
+
+  [data-spotlight]::before {
+    display: none;
+  }
+}

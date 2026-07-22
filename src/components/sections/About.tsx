@@ -3,9 +3,14 @@ import styles from "./About.module.css";
 
 export function About() {
   return (
-    <section id="about" className={styles.section} aria-labelledby="about-heading">
-      <div className={`container ${styles.grid}`}>
-        <div className={styles.portraitWrap}>
+    <section
+      id="about"
+      className={styles.section}
+      aria-labelledby="about-heading"
+      data-spotlight
+    >
+      <div className={`container ${styles.grid}`} data-reveal-stagger>
+        <div className={styles.portraitWrap} data-reveal-child>
           <div className={styles.portrait}>
             <img
               src={ASSETS.headshot}
@@ -16,7 +21,7 @@ export function About() {
             />
           </div>
         </div>
-        <div>
+        <div data-reveal-child>
           <p className={styles.label}>About</p>
           <h2 id="about-heading">{SITE.name}</h2>
           <div className={styles.copy}>

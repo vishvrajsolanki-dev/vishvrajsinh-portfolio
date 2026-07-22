@@ -73,6 +73,16 @@
 .edgeActive {
   stroke: var(--accent);
   stroke-width: 0.55;
+  animation: edgeGlow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes edgeGlow {
+  from {
+    stroke-opacity: 0.55;
+  }
+  to {
+    stroke-opacity: 1;
+  }
 }
 
 .node {
@@ -86,6 +96,17 @@
 .nodeActive {
   fill: var(--accent);
   stroke: var(--accent);
+  animation: nodePulse 1.6s var(--ease-soft) infinite;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent));
+  }
 }
 
 .nodeLabel {
@@ -158,8 +179,9 @@
   border: 0;
 }
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .nodeActive,
+  .edgeActive {
+    animation: none;
   }
 }

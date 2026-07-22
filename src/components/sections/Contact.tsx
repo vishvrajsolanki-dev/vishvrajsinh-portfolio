@@ -41,7 +41,7 @@ export function Contact() {
   return (
     <section id="contact" className={styles.section} aria-labelledby="contact-heading">
       <div className={`container ${styles.grid}`}>
-        <div>
+        <div data-reveal>
           <p className={styles.label}>Contact</p>
           <h2 id="contact-heading">Let&apos;s build something</h2>
           <p className={styles.lede}>
@@ -82,28 +82,46 @@ export function Contact() {
                 Opening your mail client. If it does not appear, email me directly.
               </p>
             )}
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" magnetic>
               Send message
             </Button>
           </form>
         </div>
-        <aside className={styles.channels}>
-          <button type="button" className={styles.channel} onClick={copyEmail}>
+        <aside className={styles.channels} data-reveal-stagger>
+          <button type="button" className={styles.channel} onClick={copyEmail} data-reveal-child>
             <span>EMAIL</span>
             <strong>{SITE.email}</strong>
             <em>{copied ? "Copied" : "Copy"}</em>
           </button>
-          <a className={styles.channel} href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.channel}
+            href={SITE.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-reveal-child
+          >
             <span>LINKEDIN</span>
             <strong>Profile</strong>
             <em>Open ↗</em>
           </a>
-          <a className={styles.channel} href={SITE.github} target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.channel}
+            href={SITE.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-reveal-child
+          >
             <span>GITHUB</span>
             <strong>vishvrajsolanki-dev</strong>
             <em>Open ↗</em>
           </a>
-          <a className={styles.channel} href={SITE.resumeUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.channel}
+            href={SITE.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-reveal-child
+          >
             <span>RESUME</span>
             <strong>Download CV</strong>
             <em>Open ↗</em>
