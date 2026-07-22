@@ -32,6 +32,14 @@ html {
   }
 }
 
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -42,6 +50,9 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition:
+    background-color 320ms var(--ease-soft),
+    color 320ms var(--ease-soft);
 }
 
 #root {

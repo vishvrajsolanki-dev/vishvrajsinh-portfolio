@@ -33,6 +33,29 @@
   letter-spacing: 0.08em;
 }
 
+.logoMark {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-soft);
+}
+
+.logo:hover .logoMark {
+  transform: translateY(-1px);
+}
+
+.logoMark::after {
+  content: "";
+  display: block;
+  height: 1.5px;
+  width: 0;
+  margin-top: 2px;
+  background: var(--accent);
+  transition: width var(--dur-base) var(--ease-soft);
+}
+
+.logo:hover .logoMark::after {
+  width: 100%;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -48,11 +71,13 @@
   transition: color var(--dur-fast) var(--ease-soft);
 }
 
-.link:hover {
+.link:hover,
+.linkActive {
   color: var(--text);
 }
 
-.link:hover::after {
+.link:hover::after,
+.linkActive::after {
   transform: scaleX(1);
 }
 
@@ -77,21 +102,24 @@
 
 .theme {
   min-height: 36px;
-  min-width: 44px;
-  padding: 0 12px;
+  min-width: 36px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-soft);
 }
 
 .theme:hover {
   color: var(--text);
+  transform: rotate(-8deg);
 }
 
 .resume {
