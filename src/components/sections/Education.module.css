@@ -1,29 +1,37 @@
 .section {
-  padding: var(--space-9) 0;
+  padding: 120px 0;
   background: var(--bg-band);
 }
 
 .inner {
   text-align: left;
-  max-width: 720px;
+  max-width: 760px;
+  padding: 48px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 12px;
-}
-
-.section h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
   margin-bottom: 14px;
 }
 
+.section h2 {
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  letter-spacing: -0.045em;
+  margin-bottom: 16px;
+}
+
 .school {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .meta {
@@ -31,7 +39,9 @@
 }
 
 .aim {
-  margin-top: 18px;
+  margin-top: 22px;
   color: var(--text-muted);
-  font-size: 0.9375rem;
+  font-size: 0.95rem;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
 }

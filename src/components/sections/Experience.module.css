@@ -1,36 +1,46 @@
 .section {
-  padding: var(--space-9) 0;
-  background: var(--bg-band);
+  padding: 120px 0;
+  background:
+    radial-gradient(ellipse 40% 30% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+    var(--bg-band);
 }
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section h2 {
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: 36px;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 40px;
 }
 
 .list {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
+  border-radius: var(--radius-xl);
+  padding: 32px 36px;
   box-shadow: var(--shadow);
-  transition: border-color var(--dur-fast) var(--ease-soft);
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-soft);
 }
 
 .panel:hover {
   border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .panelTop {
@@ -38,7 +48,7 @@
   justify-content: space-between;
   gap: 16px;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .metaRow {
@@ -46,18 +56,20 @@
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .period {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
+  letter-spacing: 0.04em;
 }
 
 .panel h3 {
-  font-size: 1.35rem;
-  margin-bottom: 4px;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
 }
 
 .org {
@@ -68,36 +80,36 @@
   margin: 0;
   padding-left: 18px;
   display: grid;
-  gap: 8px;
-  color: var(--text);
+  gap: 10px;
 }
 
 .stepper {
   list-style: none;
   display: grid;
-  gap: 8px;
-  margin: 18px 0 0;
-  padding: 14px;
-  border-radius: var(--radius-md);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 16px;
+  border-radius: var(--radius-lg);
   background: var(--bg-band);
 }
 
 .stepper li {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   position: relative;
-  padding-left: 18px;
+  padding-top: 18px;
 }
 
 .stepper li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.4em;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
   background: var(--border-strong);
 }
 
@@ -118,7 +130,7 @@
 }
 
 .expandBtn {
-  margin-top: 16px;
+  margin-top: 18px;
   border: 0;
   background: transparent;
   color: var(--accent);
@@ -128,25 +140,26 @@
 }
 
 .nested {
-  margin-top: 14px;
+  margin-top: 16px;
   display: grid;
   gap: 12px;
 }
 
 .nestedItem {
-  padding: 14px;
-  border-radius: var(--radius-md);
+  padding: 16px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--bg);
 }
 
 .nestedItem h4 {
   margin-bottom: 6px;
+  letter-spacing: -0.02em;
 }
 
 .nestedItem p {
   color: var(--text-muted);
-  font-size: 0.9375rem;
+  font-size: 0.94rem;
 }
 
 .nestedLinks {
@@ -161,12 +174,22 @@
   font-weight: 600;
 }
 
+@media (max-width: 900px) {
+  .stepper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .panel {
-    padding: 20px;
+    padding: 22px;
   }
 
   .panelTop {
     flex-direction: column;
+  }
+
+  .stepper {
+    grid-template-columns: 1fr;
   }
 }

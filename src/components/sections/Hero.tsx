@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { SITE } from "../../data/content";
 import { usePrefersReducedMotion, useMediaQuery } from "../../hooks/useMedia";
 import { useTheme } from "../../hooks/useTheme";
@@ -15,25 +15,16 @@ export function Hero() {
   const { theme } = useTheme();
   const [ready, setReady] = useState(false);
   const [skipped, setSkipped] = useState(false);
-  const metricsRef = useRef<HTMLUListElement>(null);
   const enable3d = !reduced && !isMobile && !skipped;
 
   useEffect(() => {
-    const t = window.setTimeout(() => setReady(true), reduced || skipped ? 0 : 400);
+    const t = window.setTimeout(() => setReady(true), reduced || skipped ? 40 : 520);
     return () => window.clearTimeout(t);
   }, [reduced, skipped]);
 
-  useEffect(() => {
-    if (!metricsRef.current) return;
-    const nodes = metricsRef.current.querySelectorAll("[data-count]");
-    nodes.forEach((node) => {
-      const el = node as HTMLElement;
-      el.textContent = el.dataset.count ?? "";
-    });
-  }, [ready]);
-
   return (
     <section className={styles.hero} id="hero" aria-label="Introduction">
+      <div className={styles.atmosphere} aria-hidden />
       <div className={styles.stage} aria-hidden={!enable3d}>
         {enable3d ? (
           <Suspense fallback={<div className={styles.poster} />}>
@@ -44,35 +35,47 @@ export function Hero() {
         )}
       </div>
 
-      <div className={`container ${styles.content} ${ready ? styles.contentReady : ""}`}>
-        <p className={styles.eyebrow}>{SITE.eyebrow}</p>
-        <h1 className={styles.name}>{SITE.name}</h1>
-        <p className={styles.tagline}>{SITE.tagline}</p>
-        <p className={styles.support}>{SITE.support}</p>
-        <div className={styles.ctas}>
-          <Button href={SITE.resumeUrl} variant="primary" magnetic>
-            Download Resume
-          </Button>
-          <Button href="/#work" variant="secondary">
-            View work
-          </Button>
-          {enable3d && (
-            <Button variant="ghost" onClick={() => setSkipped(true)}>
-              Skip intro
+      <div className={`container ${styles.shell}`}>
+        <div className={`${styles.content} ${ready ? styles.contentReady : ""}`}>
+          <p className={styles.eyebrow}>
+            <span className={styles.dot} aria-hidden />
+            {SITE.eyebrow}
+          </p>
+          <h1 className={styles.name}>
+            <span>Vishvrajsinh</span>
+            <span>Solanki</span>
+          </h1>
+          <p className={styles.tagline}>{SITE.tagline}</p>
+          <p className={styles.support}>{SITE.support}</p>
+          <div className={styles.ctas}>
+            <Button href={SITE.resumeUrl} variant="primary" magnetic>
+              Download Resume
             </Button>
-          )}
+            <Button href="/#work" variant="secondary">
+              View work
+            </Button>
+            {enable3d && (
+              <Button variant="ghost" onClick={() => setSkipped(true)}>
+                Skip intro
+              </Button>
+            )}
+          </div>
         </div>
-        <ul className={styles.metrics} ref={metricsRef}>
+
+        <ul className={`${styles.metrics} ${ready ? styles.contentReady : ""}`}>
           {SITE.metrics.map((m) => (
             <li key={m.label}>
-              <span data-count={m.value} className={styles.metricValue}>
-                {m.value}
-              </span>
+              <span className={styles.metricValue}>{m.value}</span>
               <span className={styles.metricLabel}>{m.label}</span>
             </li>
           ))}
         </ul>
       </div>
+
+      <a href="/#work" className={styles.scroll} aria-label="Scroll to work">
+        <span />
+        Scroll
+      </a>
     </section>
   );
 }

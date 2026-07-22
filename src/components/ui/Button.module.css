@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 40px;
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
+  min-height: 44px;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
   border: 1px solid transparent;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -16,7 +16,8 @@
     background var(--dur-fast) var(--ease-soft),
     border-color var(--dur-fast) var(--ease-soft),
     color var(--dur-fast) var(--ease-soft),
-    filter var(--dur-fast) var(--ease-soft);
+    filter var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-soft);
   text-decoration: none;
 }
 
@@ -28,10 +29,11 @@
 .primary {
   background: var(--cta);
   color: var(--cta-text);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--cta) 18%, transparent);
 }
 
 .primary:hover:not(:disabled) {
-  filter: brightness(1.06);
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
@@ -40,9 +42,10 @@
 }
 
 .secondary {
-  background: transparent;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
   color: var(--text);
   border-color: var(--border-strong);
+  backdrop-filter: blur(8px);
 }
 
 .secondary:hover:not(:disabled) {
@@ -55,11 +58,13 @@
   min-height: 36px;
   padding: 8px 12px;
   font-weight: 500;
+  border-radius: var(--radius-md);
 }
 
 .ghost:hover:not(:disabled) {
   color: var(--text);
   text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .magnetic {

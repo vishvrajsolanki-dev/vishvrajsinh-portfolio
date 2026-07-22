@@ -2,15 +2,28 @@
   position: relative;
   min-height: 100svh;
   display: grid;
-  align-items: end;
+  align-items: stretch;
   overflow: hidden;
   isolation: isolate;
+  background: var(--bg);
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 72% 42%, var(--hero-glow), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 18% 78%, var(--hero-glow-2), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-band) 100%);
+  pointer-events: none;
 }
 
 .stage {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .stage canvas {
@@ -18,32 +31,46 @@
   height: 100% !important;
 }
 
+@media (min-width: 901px) {
+  .stage {
+    left: 38%;
+  }
+}
+
 .poster {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 70% 35%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 42%),
-    radial-gradient(circle at 30% 70%, color-mix(in srgb, var(--brand) 14%, transparent), transparent 45%),
-    var(--bg-band);
+    radial-gradient(circle at 62% 40%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 42%),
+    radial-gradient(circle at 70% 58%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 36%),
+    transparent;
 }
 
 .posterDark {
   background:
-    radial-gradient(circle at 70% 35%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 42%),
-    radial-gradient(circle at 25% 65%, color-mix(in srgb, #1e3a5f 50%, transparent), transparent 48%),
-    var(--bg);
+    radial-gradient(circle at 62% 40%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 42%),
+    radial-gradient(circle at 70% 58%, rgba(30, 58, 95, 0.55), transparent 40%),
+    transparent;
+}
+
+.shell {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 48px, var(--max-width));
+  margin-inline: auto;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding-top: calc(var(--nav-height) + 48px);
+  padding-bottom: 36px;
 }
 
 .content {
-  position: relative;
-  z-index: 1;
-  padding-bottom: clamp(48px, 10vh, 96px);
-  padding-top: calc(var(--nav-height) + 48px);
-  max-width: 720px;
-  margin-left: max(24px, calc((100% - var(--max-width)) / 2 + 24px));
-  margin-right: 24px;
+  max-width: 620px;
+  align-self: end;
+  padding-bottom: 48px;
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(28px);
   transition:
     opacity var(--dur-slow) var(--ease-expo),
     transform var(--dur-slow) var(--ease-expo);
@@ -55,70 +82,167 @@
 }
 
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  margin-bottom: 22px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .name {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  display: grid;
+  gap: 0.02em;
+  font-size: clamp(3rem, 7.2vw, 5.75rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  margin-bottom: 22px;
 }
 
 .tagline {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
   font-weight: 500;
-  margin-bottom: 10px;
+  line-height: 1.45;
+  max-width: 34ch;
+  margin-bottom: 12px;
 }
 
 .support {
   color: var(--text-muted);
-  max-width: 52ch;
-  margin-bottom: 28px;
+  max-width: 46ch;
+  margin-bottom: 32px;
+  font-size: 1rem;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 36px;
 }
 
 .metrics {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
   margin: 0;
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--hairline);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-slow) var(--ease-expo) 120ms,
+    transform var(--dur-slow) var(--ease-expo) 120ms;
+  max-width: 720px;
+}
+
+.metrics.contentReady {
+  opacity: 1;
+  transform: none;
+}
+
+.metrics li {
+  padding: 0 20px;
+  border-right: 1px solid var(--hairline);
+}
+
+.metrics li:first-child {
+  padding-left: 0;
+}
+
+.metrics li:last-child {
+  border-right: 0;
 }
 
 .metricValue {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
 }
 
 .metricLabel {
   display: block;
   color: var(--text-muted);
-  font-size: 0.8125rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
-@media (max-width: 768px) {
+.scroll {
+  position: absolute;
+  left: max(24px, calc((100% - var(--max-width)) / 2 + 24px));
+  bottom: 28px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scroll span {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to bottom, var(--text), transparent);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    width: min(100% - 32px, var(--max-width));
+    padding-top: calc(var(--nav-height) + 28px);
+  }
+
   .content {
-    margin-left: 16px;
-    margin-right: 16px;
+    max-width: none;
+    align-self: center;
+    padding-bottom: 24px;
+  }
+
+  .name {
+    font-size: clamp(2.6rem, 12vw, 3.6rem);
   }
 
   .metrics {
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: none;
+  }
+
+  .metrics li {
+    border-right: 0;
+    padding: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .metrics li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .scroll {
+    display: none;
+  }
+
+  .stage {
+    opacity: 0.55;
   }
 }

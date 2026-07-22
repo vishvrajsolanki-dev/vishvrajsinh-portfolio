@@ -1,34 +1,39 @@
 .section {
-  padding: var(--space-9) 0;
+  padding: 120px 0;
+  background: var(--bg);
 }
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section h2 {
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: 10px;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
 }
 
 .lede {
   color: var(--text-muted);
-  margin-bottom: 28px;
-  max-width: 50ch;
+  margin-bottom: 36px;
+  max-width: 48ch;
 }
 
 .rail {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(320px, 380px);
-  gap: 24px;
+  grid-auto-columns: minmax(340px, 400px);
+  gap: 22px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 8px max(24px, calc((100% - var(--max-width)) / 2 + 24px)) 24px;
+  padding: 8px max(24px, calc((100% - var(--max-width)) / 2 + 24px)) 28px;
   cursor: grab;
+  scrollbar-width: thin;
 }
 
 .rail:active {
@@ -44,32 +49,55 @@
   scroll-snap-align: start;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow);
-  padding-bottom: 16px;
+  padding-bottom: 18px;
+  transition: transform var(--dur-fast) var(--ease-soft);
+}
+
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .photo {
-  height: 220px;
+  height: 240px;
   background:
-    linear-gradient(135deg, var(--bg-band), color-mix(in srgb, var(--brand) 18%, var(--bg-band)));
+    linear-gradient(145deg, color-mix(in srgb, var(--brand) 18%, var(--bg-band)), var(--bg-band) 40%, color-mix(in srgb, var(--accent) 16%, var(--bg-band))),
+    var(--bg-band);
+  position: relative;
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 18px 18px;
+  height: 1px;
+  background: color-mix(in srgb, var(--text) 18%, transparent);
 }
 
 .year {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin: 14px 16px 6px;
+  margin: 16px 18px 8px;
 }
 
 .card h3 {
-  font-size: 1.125rem;
-  margin: 0 16px 8px;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  margin: 0 18px 8px;
 }
 
 .card p:last-child {
-  margin: 0 16px;
+  margin: 0 18px;
   color: var(--text-muted);
-  font-size: 0.9375rem;
+  font-size: 0.94rem;
+}
+
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+  }
 }

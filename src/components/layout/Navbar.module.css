@@ -4,12 +4,13 @@
   z-index: 100;
   height: var(--nav-height);
   background: var(--nav-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
   border-bottom: 1px solid transparent;
   transition:
     border-color var(--dur-base) var(--ease-soft),
-    box-shadow var(--dur-base) var(--ease-soft);
+    box-shadow var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft);
 }
 
 .scrolled {
@@ -28,8 +29,8 @@
 .logo {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
 }
 
 .nav {
@@ -39,16 +40,33 @@
 }
 
 .link {
+  position: relative;
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: 0.84rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
   transition: color var(--dur-fast) var(--ease-soft);
 }
 
 .link:hover {
   color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 6px;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1.5px;
+  background: var(--brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-soft);
 }
 
 .actions {
@@ -60,25 +78,27 @@
 .theme {
   min-height: 36px;
   min-width: 44px;
-  padding: 0 10px;
-  border-radius: var(--radius-md);
+  padding: 0 12px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--border-strong);
-  background: transparent;
+  background: var(--surface);
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
 .theme:hover {
   color: var(--text);
-  background: var(--bg-band);
 }
 
 .resume {
   min-height: 36px;
-  padding: 8px 14px;
-  font-size: 0.8125rem;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
 }
 
 .hamburger {
@@ -137,8 +157,9 @@
   }
 
   .drawerLink {
-    padding: 14px 0;
-    font-size: 1.125rem;
+    padding: 16px 0;
+    font-size: 1.25rem;
+    font-family: var(--font-display);
     font-weight: 600;
     border-bottom: 1px solid var(--border);
   }
