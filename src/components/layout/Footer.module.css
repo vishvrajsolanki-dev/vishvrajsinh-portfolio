@@ -1,0 +1,36 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+
+.inner {
+  display: grid;
+  gap: 12px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.links a {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.links a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.meta,
+.copy {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}

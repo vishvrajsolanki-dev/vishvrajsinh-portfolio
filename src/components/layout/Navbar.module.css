@@ -1,0 +1,259 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    color var(--dur-base) var(--ease-soft);
+}
+
+.overHero {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: #f4f7fa;
+  box-shadow: none;
+  border-bottom-color: transparent;
+}
+
+.overHero.scrolled {
+  background: rgba(5, 10, 16, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+.scrolled:not(.overHero) {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: inherit;
+}
+
+.overHero .logo {
+  color: #f7fafc;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.logoMark {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-soft);
+}
+
+.logo:hover .logoMark {
+  transform: translateY(-1px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.overHero .nav {
+  display: none;
+}
+
+.link {
+  position: relative;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color var(--dur-fast) var(--ease-soft);
+}
+
+.link:hover,
+.linkActive {
+  color: var(--text);
+}
+
+.link:hover::after,
+.linkActive::after {
+  transform: scaleX(1);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1.5px;
+  background: var(--brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-soft);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme {
+  min-height: 36px;
+  min-width: 36px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-soft);
+}
+
+.overHero .theme {
+  display: none;
+}
+
+.theme:hover {
+  color: var(--text);
+  transform: rotate(-8deg);
+}
+
+.resume {
+  min-height: 36px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+}
+
+.overHero .resume {
+  display: none;
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.overHero .menuBtn {
+  display: inline-flex;
+}
+
+.menuLabel {
+  opacity: 0.9;
+}
+
+.menuDots {
+  display: grid;
+  grid-template-columns: repeat(3, 4px);
+  gap: 3px;
+  width: 18px;
+}
+
+.menuDots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  display: block;
+  opacity: 0.85;
+}
+
+.drawer {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .menuBtn {
+    display: inline-flex;
+  }
+
+  .overHero .theme,
+  .theme {
+    display: none;
+  }
+
+  .drawer {
+    display: block;
+    position: fixed;
+    inset: var(--nav-height) 0 0 0;
+    background: var(--bg);
+    padding: 32px 24px;
+    transform: translateX(100%);
+    transition: transform var(--dur-base) var(--ease-soft);
+    z-index: 99;
+  }
+
+  .overHero ~ .drawer,
+  .overHero .drawer {
+    background: #050a10;
+    color: #f4f7fa;
+  }
+
+  .drawerOpen {
+    transform: translateX(0);
+  }
+
+  .drawer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .drawerLink {
+    padding: 16px 0;
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .overHero .drawerLink {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #f4f7fa;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume {
+    display: none;
+  }
+}

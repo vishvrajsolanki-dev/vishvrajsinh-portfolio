@@ -1,0 +1,149 @@
+.page {
+  padding: calc(var(--nav-height) + 48px) 0 96px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.toc {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  display: grid;
+  gap: 10px;
+}
+
+.toc p {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.toc a {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.toc a:hover {
+  color: var(--text);
+}
+
+.index {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.heroMedia {
+  margin-bottom: 28px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.heroMedia img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.page h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  margin: 12px 0 8px;
+}
+
+.sub {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.lede {
+  max-width: 60ch;
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.block {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  max-width: 72ch;
+}
+
+.block h2 {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.stack span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-band);
+}
+
+.block ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.next {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.next p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.next a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.missing {
+  padding: 120px 0;
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .toc {
+    position: static;
+    grid-auto-flow: column;
+    overflow-x: auto;
+  }
+}
