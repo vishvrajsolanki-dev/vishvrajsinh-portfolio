@@ -6,29 +6,31 @@ import styles from "./Work.module.css";
 
 function ProjectVisual({ project }: { project: Project }) {
   return (
-    <div className={styles.visual} data-project={project.id} aria-hidden>
-      <div className={styles.visualGlow} />
+    <div className={styles.visual} data-project={project.id}>
+      <div className={styles.visualGlow} aria-hidden />
       <div className={styles.visualFrame}>
-        <div className={styles.visualTop}>
-          <span>{project.index}</span>
-          <span>{project.status}</span>
-        </div>
-        <div className={styles.visualCore}>
-          <p className={styles.visualTitle}>{project.title}</p>
-          <p className={styles.visualSub}>{project.subtitle}</p>
-          <div className={styles.visualGrid}>
-            {project.metrics.slice(0, 3).map((m) => (
-              <div key={m}>
-                <strong>{m.split(" ")[0]}</strong>
-                <span>{m}</span>
-              </div>
+        <img
+          className={styles.cover}
+          src={project.cover}
+          alt={`${project.title} preview`}
+          width={1280}
+          height={720}
+          loading="lazy"
+        />
+        <div className={styles.visualOverlay}>
+          <div className={styles.visualTop}>
+            <span>{project.index}</span>
+            <span>{project.status}</span>
+          </div>
+          <div className={styles.visualCore}>
+            <p className={styles.visualTitle}>{project.title}</p>
+            <p className={styles.visualSub}>{project.subtitle}</p>
+          </div>
+          <div className={styles.visualStack}>
+            {project.stack.slice(0, 4).map((s) => (
+              <span key={s}>{s}</span>
             ))}
           </div>
-        </div>
-        <div className={styles.visualStack}>
-          {project.stack.slice(0, 4).map((s) => (
-            <span key={s}>{s}</span>
-          ))}
         </div>
       </div>
     </div>

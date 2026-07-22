@@ -39,6 +39,22 @@
   margin-bottom: 12px;
 }
 
+.heroMedia {
+  margin-bottom: 28px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.heroMedia img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
 .page h1 {
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   margin: 12px 0 8px;

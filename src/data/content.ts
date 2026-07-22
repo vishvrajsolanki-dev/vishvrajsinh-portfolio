@@ -51,6 +51,8 @@ export type Project = {
   problem: string;
   approach: string;
   metrics: string[];
+  cover: string;
+  gallery?: string[];
   github?: string;
   live?: string;
   caseStudy: boolean;
@@ -73,6 +75,8 @@ export const PROJECTS: Project[] = [
     approach:
       "Architecture v4 STABLE: vectorized Monte Carlo, five ML models, multi-agent RAG over RBI/SEBI/AMFI corpus. Design complete. Implementation under way.",
     metrics: ["10,000 scenarios", "Architecture complete", "D01–D26 blueprint"],
+    cover: "/assets/projects/arc/cover.png",
+    gallery: ["/assets/projects/arc/architecture.png"],
     caseStudy: true,
   },
   {
@@ -91,6 +95,7 @@ export const PROJECTS: Project[] = [
     approach:
       "RFID + IMU + encoder fusion path, WebSocket dashboard, KNN surface classifier, SSIP funding path through institutional rounds.",
     metrics: ["SSIP first + dept cleared", "₹35K path", "IEEE paper in progress"],
+    cover: "/assets/projects/trackbot/cover.png",
     github: "https://github.com/vishvrajsolanki-dev/trackbot",
     caseStudy: true,
   },
@@ -109,6 +114,7 @@ export const PROJECTS: Project[] = [
     approach:
       "Multimodal ingest → chunking → retrieval → generation with QA harness discipline (78/82 tests).",
     metrics: ["78/82 QA tests", "Deployed on Render"],
+    cover: "/assets/projects/lexis/cover.png",
     github: "https://github.com/vishvrajsolanki-dev/lexis",
     live: "https://lexis-evx3.onrender.com",
     caseStudy: true,
@@ -128,6 +134,7 @@ export const PROJECTS: Project[] = [
     approach:
       "Archetype profiling, forecasting, narrative money story, zero external AI APIs dependency for core path.",
     metrics: ["Crisis predictor", "Student-focused"],
+    cover: "/assets/projects/rupeeiq/cover.png",
     github: "https://github.com/vishvrajsolanki-dev/rupeeiq",
     caseStudy: true,
   },
@@ -144,6 +151,7 @@ export const PROJECTS: Project[] = [
     problem: "Need a tangible foresight surface while ARC production systems come online.",
     approach: "Iterative foresight engine prototype under Artificial Alliance builds.",
     metrics: ["Preview in progress"],
+    cover: "/assets/projects/fore/cover.png",
     github: "https://github.com/vishvrajsolanki-dev/fore-financial-foresight-engine",
     caseStudy: true,
   },
@@ -310,17 +318,21 @@ export const EDUCATION = {
   aim: "Targeting IIT MTech via GATE DA",
 } as const;
 
+export const ASSETS = {
+  headshot: "/assets/about/headshot.jpg",
+} as const;
+
 export const TIMELINE = [
-  { year: "2024", title: "SPEC Innovation Award", caption: "AIKYAM 1.0 national techfest recognition." },
-  { year: "2024", title: "Chatkaro 2nd Place", caption: "Model presentation, Charotar Education Society." },
-  { year: "2025", title: "B.Tech begins", caption: "AI & Data Science at ADIT, CVM University." },
-  { year: "2025", title: "Artificial Alliance", caption: "Core team forms around TrackBot. Team Lead path begins." },
-  { year: "2026", title: "CVM Hackathon Finalist", caption: "TrackBot AGV reaches finals." },
-  { year: "2026", title: "AI Intern · IIT-H path", caption: "My Job Grow × IIT Hyderabad. LoR awarded." },
-  { year: "2026", title: "ML Internships", caption: "CodSoft and CodeAlpha systems shipped." },
-  { year: "2026", title: "SSIP rounds", caption: "First and department rounds cleared. University round underway." },
-  { year: "2026", title: "ARC blueprint", caption: "D26 architecture complete. Build phase begins." },
-  { year: "2026", title: "IEEE in progress", caption: "TrackBot paper ready on author side. Process ongoing." },
+  { year: "2024", title: "SPEC Innovation Award", caption: "AIKYAM 1.0 national techfest recognition.", image: "/assets/timeline/01.svg" },
+  { year: "2024", title: "Chatkaro 2nd Place", caption: "Model presentation, Charotar Education Society.", image: "/assets/timeline/02.svg" },
+  { year: "2025", title: "B.Tech begins", caption: "AI & Data Science at ADIT, CVM University.", image: "/assets/timeline/03.svg" },
+  { year: "2025", title: "Artificial Alliance", caption: "Core team forms around TrackBot. Team Lead path begins.", image: "/assets/timeline/04.svg" },
+  { year: "2026", title: "CVM Hackathon Finalist", caption: "TrackBot AGV reaches finals.", image: "/assets/timeline/05.svg" },
+  { year: "2026", title: "AI Intern · IIT-H path", caption: "My Job Grow × IIT Hyderabad. LoR awarded.", image: "/assets/timeline/06.svg" },
+  { year: "2026", title: "ML Internships", caption: "CodSoft and CodeAlpha systems shipped.", image: "/assets/timeline/07.svg" },
+  { year: "2026", title: "SSIP rounds", caption: "First and department rounds cleared. University round underway.", image: "/assets/timeline/08.svg" },
+  { year: "2026", title: "ARC blueprint", caption: "D26 architecture complete. Build phase begins.", image: "/assets/timeline/09.svg" },
+  { year: "2026", title: "IEEE in progress", caption: "TrackBot paper ready on author side. Process ongoing.", image: "/assets/timeline/10.svg" },
 ] as const;
 
 export const CERTIFICATIONS = [

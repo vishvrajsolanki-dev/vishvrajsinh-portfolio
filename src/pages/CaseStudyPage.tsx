@@ -32,6 +32,9 @@ export function CaseStudyPage() {
           <a href="#results">Results</a>
         </aside>
         <article>
+          <div className={styles.heroMedia}>
+            <img src={project.cover} alt={`${project.title} cover`} width={1280} height={720} />
+          </div>
           <p className={styles.index}>{project.index}</p>
           <Badge status={project.status} />
           <h1 id="overview">{project.title}</h1>

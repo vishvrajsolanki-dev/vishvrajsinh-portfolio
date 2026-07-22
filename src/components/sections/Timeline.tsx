@@ -3,6 +3,23 @@ import { TIMELINE } from "../../data/content";
 import { useMediaQuery } from "../../hooks/useMedia";
 import styles from "./Timeline.module.css";
 
+function TimelineCard({
+  item,
+}: {
+  item: (typeof TIMELINE)[number];
+}) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.photo}>
+        <img src={item.image} alt="" loading="lazy" width={800} height={1000} />
+      </div>
+      <p className={styles.year}>{item.year}</p>
+      <h3>{item.title}</h3>
+      <p>{item.caption}</p>
+    </article>
+  );
+}
+
 export function Timeline() {
   const railRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -12,18 +29,15 @@ export function Timeline() {
       <div className="container">
         <p className={styles.label}>Memory Library</p>
         <h2 id="timeline-heading">Timeline</h2>
-        <p className={styles.lede}>Drag or scroll to explore milestones. Professional photos can replace frames when supplied.</p>
+        <p className={styles.lede}>
+          Drag or scroll to explore milestones. Photo placeholders for now — real memories next.
+        </p>
       </div>
 
       {isMobile ? (
         <div className={`container ${styles.vertical}`}>
           {TIMELINE.map((item) => (
-            <article key={`${item.year}-${item.title}`} className={styles.card}>
-              <div className={styles.photo} aria-hidden />
-              <p className={styles.year}>{item.year}</p>
-              <h3>{item.title}</h3>
-              <p>{item.caption}</p>
-            </article>
+            <TimelineCard key={`${item.year}-${item.title}`} item={item} />
           ))}
         </div>
       ) : (
@@ -40,12 +54,7 @@ export function Timeline() {
           }}
         >
           {TIMELINE.map((item) => (
-            <article key={`${item.year}-${item.title}`} className={styles.card}>
-              <div className={styles.photo} aria-hidden />
-              <p className={styles.year}>{item.year}</p>
-              <h3>{item.title}</h3>
-              <p>{item.caption}</p>
-            </article>
+            <TimelineCard key={`${item.year}-${item.title}`} item={item} />
           ))}
         </div>
       )}
