@@ -1,0 +1,73 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-soft),
+    background var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft),
+    filter var(--dur-fast) var(--ease-soft);
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--cta);
+  color: var(--cta-text);
+}
+
+.primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--bg-band);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-muted);
+  min-height: 36px;
+  padding: 8px 12px;
+  font-weight: 500;
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.magnetic {
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .magnetic {
+    transform: none !important;
+  }
+}

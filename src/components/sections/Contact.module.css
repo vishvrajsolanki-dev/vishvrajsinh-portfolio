@@ -1,0 +1,141 @@
+.section {
+  padding: var(--space-9) 0 var(--space-10);
+  background: var(--bg-band);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 12px;
+}
+
+.lede {
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  max-width: 46ch;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  min-height: 48px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  padding: 12px 14px;
+}
+
+.form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag,
+.tagActive {
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.tagActive {
+  color: var(--text);
+  border-color: var(--brand);
+  background: var(--surface);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.875rem;
+}
+
+.success {
+  color: var(--success);
+  font-size: 0.875rem;
+}
+
+.channels {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.channel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 4px 12px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.channel span {
+  grid-column: 1;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.channel strong {
+  grid-column: 1;
+  font-size: 0.95rem;
+}
+
+.channel em {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-style: normal;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.channel:hover {
+  border-color: var(--border-strong);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

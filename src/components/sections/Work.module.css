@@ -1,0 +1,263 @@
+.section {
+  padding-top: var(--space-9);
+}
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.header h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 12px;
+}
+
+.lede {
+  color: var(--text-muted);
+  max-width: 54ch;
+}
+
+.chapters {
+  display: grid;
+}
+
+.chapter {
+  min-height: 85svh;
+  display: grid;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--chapter-accent) 7%, transparent),
+      transparent 42%
+    ),
+    var(--bg);
+  scroll-margin-top: var(--nav-height);
+}
+
+.chapter:nth-child(-n + 2) {
+  min-height: 95svh;
+}
+
+.chapterInner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+  padding-block: 64px;
+}
+
+.index {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.copy h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 12px 0 8px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.oneLiner {
+  max-width: 42ch;
+  margin-bottom: 28px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.media {
+  min-height: 320px;
+}
+
+.frame {
+  height: 100%;
+  min-height: 360px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-strong);
+  background:
+    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--chapter-accent) 28%, transparent), transparent 50%),
+    var(--surface);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--overlay);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.sheet {
+  width: min(1120px, 100%);
+  max-height: min(80vh, 900px);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  animation: sheetIn var(--dur-base) var(--ease-soft);
+}
+
+@keyframes sheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--bg-band);
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.sheetMedia {
+  min-height: 280px;
+  position: relative;
+  border-right: 1px solid var(--border);
+}
+
+.mediaWash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 40% 40%, color-mix(in srgb, var(--chapter-accent) 35%, transparent), transparent 55%),
+    var(--bg-band);
+}
+
+.mediaLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  color: color-mix(in srgb, var(--text) 35%, transparent);
+}
+
+.sheetBody {
+  padding: 32px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.sheetTitle {
+  font-size: 2rem;
+}
+
+.sheetSub {
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.sheetBody h4 {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.metricList {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stack span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-band);
+}
+
+.sheetActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .chapterInner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .chapter,
+  .chapter:nth-child(-n + 2) {
+    min-height: auto;
+  }
+
+  .frame {
+    min-height: 220px;
+  }
+
+  .sheet {
+    grid-template-columns: 1fr;
+    max-height: 100svh;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .overlay {
+    padding: 0;
+  }
+
+  .sheetMedia {
+    min-height: 180px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}

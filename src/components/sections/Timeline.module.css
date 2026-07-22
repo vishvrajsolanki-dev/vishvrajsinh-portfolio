@@ -1,0 +1,75 @@
+.section {
+  padding: var(--space-9) 0;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 10px;
+}
+
+.lede {
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  max-width: 50ch;
+}
+
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 380px);
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px max(24px, calc((100% - var(--max-width)) / 2 + 24px)) 24px;
+  cursor: grab;
+}
+
+.rail:active {
+  cursor: grabbing;
+}
+
+.vertical {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  padding-bottom: 16px;
+}
+
+.photo {
+  height: 220px;
+  background:
+    linear-gradient(135deg, var(--bg-band), color-mix(in srgb, var(--brand) 18%, var(--bg-band)));
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 14px 16px 6px;
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  margin: 0 16px 8px;
+}
+
+.card p:last-child {
+  margin: 0 16px;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}

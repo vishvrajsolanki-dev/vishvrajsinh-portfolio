@@ -1,0 +1,124 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 70% 35%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 42%),
+    radial-gradient(circle at 30% 70%, color-mix(in srgb, var(--brand) 14%, transparent), transparent 45%),
+    var(--bg-band);
+}
+
+.posterDark {
+  background:
+    radial-gradient(circle at 70% 35%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 42%),
+    radial-gradient(circle at 25% 65%, color-mix(in srgb, #1e3a5f 50%, transparent), transparent 48%),
+    var(--bg);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(48px, 10vh, 96px);
+  padding-top: calc(var(--nav-height) + 48px);
+  max-width: 720px;
+  margin-left: max(24px, calc((100% - var(--max-width)) / 2 + 24px));
+  margin-right: 24px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-slow) var(--ease-expo),
+    transform var(--dur-slow) var(--ease-expo);
+}
+
+.contentReady {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.support {
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin-bottom: 28px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.metrics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.metricValue {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.metricLabel {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .metrics {
+    gap: 16px;
+  }
+}
